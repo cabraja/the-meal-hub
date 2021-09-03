@@ -8,6 +8,10 @@
   font-family: Logo;
   src: url(./fonts/mexcellent\ rg.otf);
 }
+@font-face {
+  font-family: NormalText;
+  src: url(./fonts/Raleway-VariableFont_wght.ttf);
+}
 /* FONTS --------------------------- */
 
 header {
@@ -58,40 +62,85 @@ input:focus {
   flex-direction: column;
   align-items: center;
 }
-
-#suggested-wrapper h2 {
+h2 {
   font-size: 2.4rem;
   font-family: Logo;
   color: rgb(39, 39, 39);
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   margin-bottom: 30px;
 }
 
 #suggested-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-evenly;
   width: 90%;
 }
 
 .meal {
+  background-color: rgb(41, 41, 41);
+  padding: 10px 20px;
+  border-radius: 18px;
 }
 .meal img {
   width: 300px;
-  height: 300px;
+  height: 280px;
+  border-radius: 18px;
 }
 
 .meal h4 {
   font-size: 20px;
   width: 300px;
   color: whitesmoke;
-  background-color: black;
   text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  font-family: Logo;
+  margin-bottom: 15px;
+  font-family: NormalText, Helvetica;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Suggested ----------------------------------------------------- */
+/* Categories -------------------------------------------------- */
+#categories-wrapper {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#categories-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+}
+.category {
+  color: whitesmoke;
+  background-color: rgb(56, 95, 80);
+  font-family: NormalText;
+  padding: 5px 18px;
+  border-radius: 500px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.category:hover {
+  background-color: rgb(99, 155, 133);
+  transition: 0.2s;
+}
+
+.category h3 {
+  font-weight: 100;
+}
+/* Categories -------------------------------------------------- */
