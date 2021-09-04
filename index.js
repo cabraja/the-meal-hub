@@ -22,7 +22,18 @@ const categoryContainer = document.getElementById('categories-container');
 const showSuggested = (data,index) => {
     mealsSuggested[index].innerHTML=`
         <h4>${data.strMeal}</h4>
-        <img src=${data.strMealThumb} />
+        <div class="meal-image" style="background-image:url(${data.strMealThumb});">
+            
+        <div class='meal-image-text'>
+            <h5>Category: ${data.strCategory}</h5>
+            <h5>Area: ${data.strArea}</h5>
+            <div class="instructions">
+                <h5>Instructions:</h5>
+                <a href="${data.strYoutube}" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        </div>
     `;
 }
 
