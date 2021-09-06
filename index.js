@@ -5,6 +5,8 @@ const FILTER_API = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
 const SEARCH_API = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 const mealsSuggested = document.querySelectorAll('.meal');
 
+let currentMealID;
+
 // GET DATA ---------
 const getSuggested = (url) => {
      mealsSuggested.forEach((meal,index) => {
@@ -84,7 +86,7 @@ const showFiltered = (data) => {
         <h4>${meal.strMeal}</h4>
         <div class="meal-main-image" style="background-image:url(${meal.strMealThumb});">
             <div class="meal-main-image-text">
-                <a href="single-meal.html"><i class="fas fa-search-plus"></i></a>
+                <a href="single-meal.html"><i id="${meal.idMeal}" class="fas fa-search-plus"></i></a>
             </div>
         </div>
     `;
@@ -93,7 +95,6 @@ const showFiltered = (data) => {
     })
 
 }
-
 
 // FUNCTION CALLS -----------------
 const form = document.getElementById('search-container');

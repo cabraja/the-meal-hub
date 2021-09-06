@@ -42,3 +42,42 @@ header a:hover {
   color: rgb(0, 14, 14);
   transition: 0.3s;
 }
+
+/* MAIN--------------------------- */
+
+#single-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#meal-image {
+  width: 40vw;
+  height: 50vh;
+  background-color: rgb(41, 41, 41);
+  padding: 15px;
+  border-radius: 15px;
+}
+
+#meal-info {
+  margin-top: 10px;
+  color: rgb(26, 26, 26);
+  font-family: NormalText;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.info-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+.info-box h5 {
+  color: rgb(61, 61, 61);
+}
