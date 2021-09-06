@@ -2,6 +2,7 @@
 const RAN_MEAL_API = 'https://www.themealdb.com/api/json/v1/1/random.php';
 const CATEGORY_API = 'https://www.themealdb.com/api/json/v1/1/categories.php';
 const FILTER_API = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
+const SEARCH_API = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 const mealsSuggested = document.querySelectorAll('.meal');
 
 // GET DATA ---------
@@ -11,7 +12,7 @@ const getSuggested = (url) => {
      })
 }
 
-const getCagetories = (url) => {
+const getCategories = (url) => {
     fetch(url).then(res => res.json()).then(data => showCategories(data.categories));
 }
 
@@ -20,6 +21,20 @@ const getFiltered = (e) => {
     main.innerHTML = 'Loading...';
     const criteria = e.target.innerHTML;
     fetch(FILTER_API + criteria).then(res => res.json()).then(data => showFiltered(data.meals));
+}
+
+const getSearched = () => {
+    const main = document.getElementById('main');
+    main.innerHTML = 'Loading...';
+    const criteria = document.getElementById('search').value;
+    console.log(criteria);
+    fetch(SEARCH_API + criteria).then(res => res.json()).then(data => {
+        if(data.meals == null){
+            main.innerHTML = '<h6>No results found...</h6>';
+        }else{
+            showFiltered(data.meals);
+        }
+    });
 }
 
 
@@ -61,25 +76,33 @@ const showCategories = (data) => {
 const showFiltered = (data) => {
     const main = document.getElementById('main');
     main.innerHTML = '';
-
+    // https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}
     data.forEach(meal => {
         const element = document.createElement('div');
         element.classList.add('meal-main');
         element.innerHTML=`
         <h4>${meal.strMeal}</h4>
-        <div class="meal-main-image" style="background-image:url(${meal.strMealThumb});"></div>
+        <div class="meal-main-image" style="background-image:url(${meal.strMealThumb});">
+            <div class="meal-main-image-text">
+                <a href="single-meal.html"><i class="fas fa-search-plus"></i></a>
+            </div>
+        </div>
     `;
 
     main.appendChild(element);
     })
 
-    
 }
 
 
-
-
 // FUNCTION CALLS -----------------
+const form = document.getElementById('search-container');
+
+form.addEventListener('submit',e => {
+    e.preventDefault();
+    getSearched();
+})
+
 getSuggested(RAN_MEAL_API);
-getCagetories(CATEGORY_API);
+getCategories(CATEGORY_API);
 
