@@ -14,6 +14,10 @@
 }
 /* FONTS --------------------------- */
 
+body {
+  position: relative;
+}
+
 header {
   width: 100%;
   display: flex;
@@ -254,19 +258,100 @@ h2 {
   opacity: 100%;
 }
 
-.meal-main-image a {
-  color: rgb(238, 238, 238);
-  text-decoration: none;
-  font-size: 3.5rem;
+.meal-main-image-text button {
+  color: whitesmoke;
+  font-size: 60px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
   transition: 0.3s;
 }
-.meal-main-image a:hover {
-  color: rgb(91, 155, 131);
+.meal-main-image-text button:hover {
+  color: rgb(56, 95, 80);
   transition: 0.3s;
 }
-
 .meal-main-image-text h5 {
   font-weight: 200;
 }
 
 /* Main ---------------------------------------------------------- */
+
+/* MODAL --------------------------------- */
+
+#modal-wrapper {
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(17, 17, 17, 0.87);
+  display: none;
+}
+
+#modal {
+  position: fixed;
+  display: block;
+  top: 12vh;
+  left: 0;
+  right: 0;
+  width: 60vw;
+  height: 85vh;
+  background-color: rgba(228, 228, 228, 0.975);
+  border-radius: 30px;
+  margin: 0px auto;
+  border: 6px solid black;
+  color: rgb(43, 42, 42);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: NormalText;
+  overflow-y: scroll;
+}
+
+#exit-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 38px;
+  transition: 0.2s;
+  cursor: pointer;
+  color: rgb(41, 41, 41);
+}
+#exit-modal:hover {
+  color: rgb(206, 72, 72);
+  transition: 0.2s;
+}
+
+#modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh 5vw;
+}
+#modal-content * {
+  margin-bottom: 10px;
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+#modal-content h3 {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+#modal-content h4 {
+  font-weight: 700;
+}
+
+#modal-content p {
+  text-align: center;
+  font-size: 1rem;
+}
+
+#modal-image {
+  width: 30vw;
+  height: 30vh;
+  margin-top: 30px;
+  background-color: rgb(74, 100, 86);
+  margin-bottom: 20px;
+  background-size: cover;
+  background-position: center;
+}

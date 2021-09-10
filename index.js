@@ -3,6 +3,7 @@ const RAN_MEAL_API = 'https://www.themealdb.com/api/json/v1/1/random.php';
 const CATEGORY_API = 'https://www.themealdb.com/api/json/v1/1/categories.php';
 const FILTER_API = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
 const SEARCH_API = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+const ID_API = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
 const mealsSuggested = document.querySelectorAll('.meal');
 
 let currentMealID;
@@ -86,15 +87,38 @@ const showFiltered = (data) => {
         <h4>${meal.strMeal}</h4>
         <div class="meal-main-image" style="background-image:url(${meal.strMealThumb});">
             <div class="meal-main-image-text">
-                <a href="single-meal.html"><i id="${meal.idMeal}" class="fas fa-search-plus"></i></a>
+                <button ><i onclick="showSingleMeal(event)" id='${meal.idMeal}' class="fas fa-search-plus"></i></button>
             </div>
         </div>
     `;
 
     main.appendChild(element);
     })
-
 }
+    const showSingleMeal = (event) => {
+
+        const modal = document.getElementById('modal-wrapper');
+        modal.style.display = 'block';
+        const id = event.target.id;
+
+        fetch(ID_API + id).then(res => res.json()).then(data => {
+            const meal = data.meals[0];
+            const modalName = document.getElementById('modal-name');
+            const modalType = document.getElementById('modal-type');
+            const modalArea = document.getElementById('modal-area');
+            const modalInstr = document.getElementById('modal-instr');
+            const modalImage = document.getElementById('modal-image');
+
+            modalImage.style.backgroundImage = `url(${meal.strMealThumb})`;
+            modalName.innerHTML = `${meal.strMeal}`;
+            modalType.innerHTML = `${meal.strCategory}`;
+            modalArea.innerHTML = `${meal.strArea}`;
+            modalInstr.innerHTML = `${meal.strInstructions}`;
+        });
+    }
+
+
+
 
 // FUNCTION CALLS -----------------
 const form = document.getElementById('search-container');
@@ -103,6 +127,13 @@ form.addEventListener('submit',e => {
     e.preventDefault();
     getSearched();
 })
+
+// EXIT MODAL
+const closeModal = () => {
+    const modal = document.getElementById('modal-wrapper');
+    modal.style.display = 'none';
+}
+
 
 getSuggested(RAN_MEAL_API);
 getCategories(CATEGORY_API);
