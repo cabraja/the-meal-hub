@@ -201,11 +201,9 @@ h2 {
 
 /* Main ---------------------------------------------------------- */
 #main {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   margin-top: 5vh;
   width: 85%;
   margin-left: auto;
@@ -219,6 +217,7 @@ h2 {
 }
 
 .meal-main {
+  width: fit-content;
   height: fit-content;
   background-color: rgb(41, 41, 41);
   display: flex;
@@ -228,7 +227,7 @@ h2 {
   font-family: NormalText;
   margin: 20px 16px;
   border-radius: 10px;
-  padding: 10px 20px 16px 20px;
+  padding: 10px 30px 16px 30px;
 }
 .meal-main h4 {
   font-weight: 200;
